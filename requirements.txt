@@ -1,0 +1,6 @@
+flask
+unidecode
+google-cloud-vision
+gunicorn
+numpy
+opencv-python-headless
