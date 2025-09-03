@@ -31,7 +31,7 @@ def parse_table(text):
 
     all_lines = text.split('\n')
     cleaned_lines = []
-    junk_terms = ["Porções por", "cerca de", "Percentual de valores"]
+    junk_terms = ["Porcoes por", "cerca de", "Percentual de valores"]
 
     for line in all_lines:
         line = line.strip()
@@ -39,7 +39,7 @@ def parse_table(text):
             cleaned_lines.append(line)
 
     data = {}
-    data["Açúcares totais"] = {
+    data["Acucares totais"] = {
         "por_100g":"0",
         "por_porcao":"0",
         "vd_porcao":"-"
@@ -66,7 +66,7 @@ def parse_table(text):
 
                 if len(collected_numbers) >= 3:
                     nutrient_name = line.replace("NUTRICIONAL ", "").strip()
-                    if nutrient_name != "Açúcares totais":
+                    if nutrient_name != "Acucares totais":
                         data[nutrient_name] = {
                                 "por_100g":collected_numbers[0],
                                 "por_porcao":collected_numbers[1],
@@ -91,4 +91,5 @@ def handle_image_upload():
         return flask.jsonify({f"Erro interno do servidor: {e}"}), 500
 
 if __name__ == '__main__':
+
     app.run(host = "0.0.0.0", port=int(os.environ.get("PORT", 8080)))
